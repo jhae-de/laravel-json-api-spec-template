@@ -1,0 +1,30 @@
+openapi: 3.0.3
+
+info:
+  title: '%API_TITLE%'
+  version: '%API_VERSION%'
+
+paths: { }
+
+components:
+  headers:
+    XRateLimitLimit:
+      description: The request limit per minute
+      schema:
+        type: integer
+      required: true
+      example: 60
+
+    XRateLimitRemaining:
+      description: The number of requests left for the time window
+      schema:
+        type: integer
+      required: true
+      example: 59
+
+    XRateLimitReset:
+      description: The Unix timestamp at which the current rate limit window resets
+      schema:
+        type: integer
+      required: true
+      example: 1640991600

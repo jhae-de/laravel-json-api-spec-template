@@ -1,0 +1,27 @@
+openapi: 3.0.3
+
+info:
+  title: '%API_TITLE%'
+  version: '%API_VERSION%'
+
+paths: { }
+
+components:
+  parameters:
+    Accept:
+      in: header
+      name: Accept
+      description: The "Accept" header parameter
+      schema:
+        type: string
+      required: true
+      example: application/json
+
+    ContentType:
+      in: header
+      name: Content-Type
+      description: The "Content-Type" header parameter
+      schema:
+        type: string
+      required: true
+      example: application/json

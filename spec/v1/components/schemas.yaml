@@ -1,0 +1,89 @@
+openapi: 3.0.3
+
+info:
+  title: '%API_TITLE%'
+  version: '%API_VERSION%'
+
+paths: { }
+
+components:
+  schemas:
+    Uuid:
+      description: The resource identifier
+      example: 00000000-0000-0000-0000-000000000000
+      format: uuid
+      type: string
+
+    AccessToken:
+      description: The access token
+      example: 1|epbana5twPuWFNFbu9ysCcMbFgWhAxOkz2bS2Wgr
+      type: string
+
+    AccessTokenPermissions:
+      description: The access token permissions
+      example:
+        - user:list
+        - user:read
+        - user:create
+        - user:update
+        - user:delete
+      type: array
+
+    CreatedAt:
+      description: The date and time the resource was created at
+      example: 2022-02-02T20:22:02.000000Z
+      format: date-time
+      type: string
+
+    Email:
+      description: The email address
+      example: john.doe@example.com
+      format: email
+      type: string
+
+    EmailVerifiedAt:
+      description: The date and time the email was verified at
+      example: 2022-02-02T20:22:02.000000Z
+      format: date-time
+      type: string
+
+    FirstName:
+      description: The first name
+      example: John
+      type: string
+
+    LastName:
+      description: The last name
+      example: Doe
+      type: string
+
+    Password:
+      description: The password
+      example: p455w0rd
+      type: string
+
+    UpdatedAt:
+      description: The date and time the resource was updated at
+      example: 2022-02-02T20:22:02.000000Z
+      format: date-time
+      type: string
+
+    UserRole:
+      description: The user role
+      enum:
+        - admin
+        - user
+      example: user
+      type: string
+
+    Links:
+      title: The resource links
+      type: object
+      properties:
+        self:
+          description: The resource self link
+          example: https://example.com/path/to/resource/00000000-0000-0000-0000-000000000000
+          format: url
+          type: string
+      required:
+        - self

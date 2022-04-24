@@ -1,0 +1,21 @@
+openapi: 3.0.3
+
+info:
+  title: '%API_TITLE%'
+  version: '%API_VERSION%'
+
+paths: { }
+
+components:
+  schemas:
+    AuthLoginResponse:
+      title: The login response
+      type: object
+      properties:
+        accessToken:
+          $ref: '../../../../../components/schemas.yaml#/components/schemas/AccessToken'
+        permissions:
+          $ref: '../../../../../components/schemas.yaml#/components/schemas/AccessTokenPermissions'
+      required:
+        - accessToken
+        - permissions

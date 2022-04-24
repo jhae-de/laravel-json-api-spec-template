@@ -1,0 +1,170 @@
+openapi: 3.0.3
+
+info:
+  title: '%API_TITLE%'
+  version: '%API_VERSION%'
+
+paths: { }
+
+components:
+  responses:
+    400:
+      description: Bad Request
+      headers:
+        Content-Type:
+          $ref: 'headers.jsonapi.yaml#/components/headers/ContentType'
+        X-RateLimit-Limit:
+          $ref: 'headers.yaml#/components/headers/XRateLimitLimit'
+        X-RateLimit-Remaining:
+          $ref: 'headers.yaml#/components/headers/XRateLimitRemaining'
+      content:
+        application/json:
+          schema:
+            $ref: '../../jsonapi.schema.yaml#/definitions/failure'
+          example:
+            errors:
+              - status: '400'
+                title: Bad Request
+                detail: The field ... is not a supported attribute.
+
+    401:
+      description: Unauthorized
+      headers:
+        Content-Type:
+          $ref: 'headers.jsonapi.yaml#/components/headers/ContentType'
+      content:
+        application/json:
+          schema:
+            $ref: '../../jsonapi.schema.yaml#/definitions/failure'
+          example:
+            errors:
+              - status: '401'
+                title: Unauthorized
+                detail: Unauthenticated.
+
+    403:
+      description: Forbidden
+      headers:
+        Content-Type:
+          $ref: 'headers.jsonapi.yaml#/components/headers/ContentType'
+        X-RateLimit-Limit:
+          $ref: 'headers.yaml#/components/headers/XRateLimitLimit'
+        X-RateLimit-Remaining:
+          $ref: 'headers.yaml#/components/headers/XRateLimitRemaining'
+      content:
+        application/json:
+          schema:
+            $ref: '../../jsonapi.schema.yaml#/definitions/failure'
+          example:
+            errors:
+              - status: '403'
+                title: Forbidden
+                detail: This action is unauthorized.
+
+    404:
+      description: Not Found
+      headers:
+        Content-Type:
+          $ref: 'headers.jsonapi.yaml#/components/headers/ContentType'
+      content:
+        application/json:
+          schema:
+            $ref: '../../jsonapi.schema.yaml#/definitions/failure'
+          example:
+            errors:
+              - status: '404'
+                title: Not Found
+                detail: The resource was not found.
+
+    409:
+      description: Conflict
+      headers:
+        Content-Type:
+          $ref: 'headers.jsonapi.yaml#/components/headers/ContentType'
+        X-RateLimit-Limit:
+          $ref: 'headers.yaml#/components/headers/XRateLimitLimit'
+        X-RateLimit-Remaining:
+          $ref: 'headers.yaml#/components/headers/XRateLimitRemaining'
+      content:
+        application/json:
+          schema:
+            $ref: '../../jsonapi.schema.yaml#/definitions/failure'
+          example:
+            errors:
+              - status: '409'
+                title: Conflict
+                detail: Resource id ... is not supported by this endpoint.
+
+    422:
+      description: Unprocessable Entity
+      headers:
+        Content-Type:
+          $ref: 'headers.jsonapi.yaml#/components/headers/ContentType'
+        X-RateLimit-Limit:
+          $ref: 'headers.yaml#/components/headers/XRateLimitLimit'
+        X-RateLimit-Remaining:
+          $ref: 'headers.yaml#/components/headers/XRateLimitRemaining'
+      content:
+        application/json:
+          schema:
+            $ref: '../../jsonapi.schema.yaml#/definitions/failure'
+          example:
+            errors:
+              - status: '422'
+                title: Unprocessable Entity
+                detail: The field ... is required.
+
+    429:
+      description: Too Many Requests
+      headers:
+        Content-Type:
+          $ref: 'headers.jsonapi.yaml#/components/headers/ContentType'
+        X-RateLimit-Limit:
+          $ref: 'headers.yaml#/components/headers/XRateLimitLimit'
+        X-RateLimit-Remaining:
+          $ref: 'headers.yaml#/components/headers/XRateLimitRemaining'
+        X-RateLimit-Reset:
+          $ref: 'headers.yaml#/components/headers/XRateLimitReset'
+      content:
+        application/json:
+          schema:
+            $ref: '../../jsonapi.schema.yaml#/definitions/failure'
+          example:
+            errors:
+              - status: '429'
+                title: Too Many Requests
+                detail: Too many attempts.
+
+    500:
+      description: Internal Server Error
+      headers:
+        Content-Type:
+          $ref: 'headers.jsonapi.yaml#/components/headers/ContentType'
+        X-RateLimit-Limit:
+          $ref: 'headers.yaml#/components/headers/XRateLimitLimit'
+        X-RateLimit-Remaining:
+          $ref: 'headers.yaml#/components/headers/XRateLimitRemaining'
+      content:
+        application/json:
+          schema:
+            $ref: '../../jsonapi.schema.yaml#/definitions/failure'
+          example:
+            errors:
+              - status: '500'
+                title: Internal Server Error
+                detail: An internal server error occurred.
+
+    default:
+      description: Unexpected error
+      headers:
+        Content-Type:
+          $ref: 'headers.jsonapi.yaml#/components/headers/ContentType'
+      content:
+        application/json:
+          schema:
+            $ref: '../../jsonapi.schema.yaml#/definitions/failure'
+          example:
+            errors:
+              - status: 'xxx'
+                title: Unexpected error
+                detail: An unexpected error occurred.

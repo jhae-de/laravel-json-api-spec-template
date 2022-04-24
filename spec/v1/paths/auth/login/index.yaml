@@ -1,0 +1,50 @@
+openapi: 3.0.3
+
+info:
+  title: '%API_TITLE%'
+  version: '%API_VERSION%'
+
+paths:
+  /auth/login:
+    post:
+      summary: Login
+      operationId: authLogin
+      security: []
+      tags:
+        - Auth
+      parameters:
+        - $ref: '../../../components/parameters.json.yaml#/components/parameters/Accept'
+        - $ref: '../../../components/parameters.json.yaml#/components/parameters/ContentType'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: 'components/schemas/requests.yaml#/components/schemas/AuthLoginRequest'
+            examples:
+              Login request:
+                $ref: 'components/examples.yaml#/components/examples/AuthLoginRequest'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Type:
+              $ref: '../../../components/headers.json.yaml#/components/headers/ContentType'
+            X-RateLimit-Limit:
+              $ref: '../../../components/headers.yaml#/components/headers/XRateLimitLimit'
+            X-RateLimit-Remaining:
+              $ref: '../../../components/headers.yaml#/components/headers/XRateLimitRemaining'
+          content:
+            application/json:
+              schema:
+                $ref: 'components/schemas/responses.yaml#/components/schemas/AuthLoginResponse'
+              examples:
+                Login response:
+                  $ref: 'components/examples.yaml#/components/examples/AuthLoginResponse'
+        '422':
+          $ref: '../../../components/responses.json.yaml#/components/responses/422'
+        '429':
+          $ref: '../../../components/responses.json.yaml#/components/responses/429'
+        '500':
+          $ref: '../../../components/responses.json.yaml#/components/responses/500'
+        default:
+          $ref: '../../../components/responses.json.yaml#/components/responses/default'

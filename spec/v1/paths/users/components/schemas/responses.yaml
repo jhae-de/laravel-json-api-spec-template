@@ -1,0 +1,70 @@
+openapi: 3.0.3
+
+info:
+  title: '%API_TITLE%'
+  version: '%API_VERSION%'
+
+paths: { }
+
+components:
+  schemas:
+    UserCollectionResponse:
+      title: The user collection response
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserResponse/properties/data'
+      required:
+        - data
+
+    UserResponse:
+      title: The user response
+      type: object
+      properties:
+        data:
+          title: The response data
+          type: object
+          properties:
+            type:
+              description: The resource type
+              type: string
+              enum:
+                - users
+            id:
+              $ref: '../../../../components/schemas.yaml#/components/schemas/Uuid'
+            attributes:
+              title: The resource attributes
+              type: object
+              properties:
+                firstName:
+                  $ref: '../../../../components/schemas.yaml#/components/schemas/FirstName'
+                lastName:
+                  $ref: '../../../../components/schemas.yaml#/components/schemas/LastName'
+                email:
+                  $ref: '../../../../components/schemas.yaml#/components/schemas/Email'
+                emailVerifiedAt:
+                  $ref: '../../../../components/schemas.yaml#/components/schemas/EmailVerifiedAt'
+                role:
+                  $ref: '../../../../components/schemas.yaml#/components/schemas/UserRole'
+                createdAt:
+                  $ref: '../../../../components/schemas.yaml#/components/schemas/CreatedAt'
+                updatedAt:
+                  $ref: '../../../../components/schemas.yaml#/components/schemas/UpdatedAt'
+              required:
+                - firstName
+                - lastName
+                - email
+                - role
+                - createdAt
+                - updatedAt
+            links:
+              $ref: '../../../../components/schemas.yaml#/components/schemas/Links'
+          required:
+            - type
+            - id
+            - attributes
+            - links
+      required:
+        - data

@@ -1,0 +1,16 @@
+openapi: 3.0.3
+
+info:
+  title: '%API_TITLE%'
+  version: '%API_VERSION%'
+
+paths: { }
+
+components:
+  headers:
+    ContentType:
+      description: The content type of the response
+      schema:
+        type: string
+      required: true
+      example: application/vnd.api+json

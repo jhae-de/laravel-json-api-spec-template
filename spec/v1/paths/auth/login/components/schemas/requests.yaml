@@ -1,0 +1,22 @@
+openapi: 3.0.3
+
+info:
+  title: '%API_TITLE%'
+  version: '%API_VERSION%'
+
+paths: { }
+
+components:
+  schemas:
+    AuthLoginRequest:
+      title: The login request
+      type: object
+      properties:
+        email:
+          $ref: '../../../../../components/schemas.yaml#/components/schemas/Email'
+        password:
+          $ref: '../../../../../components/schemas.yaml#/components/schemas/Password'
+      additionalProperties: false
+      required:
+        - email
+        - password

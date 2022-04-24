@@ -1,0 +1,221 @@
+openapi: 3.0.3
+
+info:
+  title: '%API_TITLE%'
+  version: '%API_VERSION%'
+
+paths:
+  /users:
+    get:
+      summary: Get user collection
+      operationId: getUserCollection
+      security:
+        - BearerToken: []
+      tags:
+        - User
+      parameters:
+        - $ref: '../../components/parameters.jsonapi.yaml#/components/parameters/Accept'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Type:
+              $ref: '../../components/headers.jsonapi.yaml#/components/headers/ContentType'
+            X-RateLimit-Limit:
+              $ref: '../../components/headers.yaml#/components/headers/XRateLimitLimit'
+            X-RateLimit-Remaining:
+              $ref: '../../components/headers.yaml#/components/headers/XRateLimitRemaining'
+          content:
+            application/json:
+              schema:
+                $ref: 'components/schemas/responses.yaml#/components/schemas/UserCollectionResponse'
+              examples:
+                User collection response:
+                  $ref: 'components/examples.yaml#/components/examples/UserCollectionResponse'
+        '401':
+          $ref: '../../components/responses.jsonapi.yaml#/components/responses/401'
+        '403':
+          $ref: '../../components/responses.jsonapi.yaml#/components/responses/403'
+        '429':
+          $ref: '../../components/responses.jsonapi.yaml#/components/responses/429'
+        '500':
+          $ref: '../../components/responses.jsonapi.yaml#/components/responses/500'
+        default:
+          $ref: '../../components/responses.json.yaml#/components/responses/default'
+
+    post:
+      summary: Create user
+      operationId: createUser
+      security:
+        - BearerToken: []
+      tags:
+        - User
+      parameters:
+        - $ref: '../../components/parameters.jsonapi.yaml#/components/parameters/Accept'
+        - $ref: '../../components/parameters.jsonapi.yaml#/components/parameters/ContentType'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: 'components/schemas/requests.yaml#/components/schemas/UserCreateRequest'
+            examples:
+              User create request:
+                $ref: 'components/examples.yaml#/components/examples/UserCreateRequest'
+      responses:
+        '201':
+          description: Created
+          headers:
+            Content-Type:
+              $ref: '../../components/headers.jsonapi.yaml#/components/headers/ContentType'
+            X-RateLimit-Limit:
+              $ref: '../../components/headers.yaml#/components/headers/XRateLimitLimit'
+            X-RateLimit-Remaining:
+              $ref: '../../components/headers.yaml#/components/headers/XRateLimitRemaining'
+          content:
+            application/json:
+              schema:
+                $ref: 'components/schemas/responses.yaml#/components/schemas/UserResponse'
+              examples:
+                User response:
+                  $ref: 'components/examples.yaml#/components/examples/UserResponse'
+        '400':
+          $ref: '../../components/responses.jsonapi.yaml#/components/responses/400'
+        '401':
+          $ref: '../../components/responses.jsonapi.yaml#/components/responses/401'
+        '403':
+          $ref: '../../components/responses.jsonapi.yaml#/components/responses/403'
+        '422':
+          $ref: '../../components/responses.jsonapi.yaml#/components/responses/422'
+        '429':
+          $ref: '../../components/responses.jsonapi.yaml#/components/responses/429'
+        '500':
+          $ref: '../../components/responses.jsonapi.yaml#/components/responses/500'
+        default:
+          $ref: '../../components/responses.json.yaml#/components/responses/default'
+
+  /users/{user}:
+    parameters:
+      - $ref: 'components/parameters.yaml#/components/parameters/User'
+
+    get:
+      summary: Get user
+      operationId: getUser
+      security:
+        - BearerToken: []
+      tags:
+        - User
+      parameters:
+        - $ref: '../../components/parameters.jsonapi.yaml#/components/parameters/Accept'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Type:
+              $ref: '../../components/headers.jsonapi.yaml#/components/headers/ContentType'
+            X-RateLimit-Limit:
+              $ref: '../../components/headers.yaml#/components/headers/XRateLimitLimit'
+            X-RateLimit-Remaining:
+              $ref: '../../components/headers.yaml#/components/headers/XRateLimitRemaining'
+          content:
+            application/json:
+              schema:
+                $ref: 'components/schemas/responses.yaml#/components/schemas/UserResponse'
+              examples:
+                User response:
+                  $ref: 'components/examples.yaml#/components/examples/UserResponse'
+        '401':
+          $ref: '../../components/responses.jsonapi.yaml#/components/responses/401'
+        '403':
+          $ref: '../../components/responses.jsonapi.yaml#/components/responses/403'
+        '404':
+          $ref: '../../components/responses.jsonapi.yaml#/components/responses/404'
+        '429':
+          $ref: '../../components/responses.jsonapi.yaml#/components/responses/429'
+        '500':
+          $ref: '../../components/responses.jsonapi.yaml#/components/responses/500'
+        default:
+          $ref: '../../components/responses.json.yaml#/components/responses/default'
+
+    patch:
+      summary: Update user
+      operationId: updateUser
+      security:
+        - BearerToken: []
+      tags:
+        - User
+      parameters:
+        - $ref: '../../components/parameters.jsonapi.yaml#/components/parameters/Accept'
+        - $ref: '../../components/parameters.jsonapi.yaml#/components/parameters/ContentType'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: 'components/schemas/requests.yaml#/components/schemas/UserUpdateRequest'
+            examples:
+              User update request:
+                $ref: 'components/examples.yaml#/components/examples/UserUpdateRequest'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Type:
+              $ref: '../../components/headers.jsonapi.yaml#/components/headers/ContentType'
+            X-RateLimit-Limit:
+              $ref: '../../components/headers.yaml#/components/headers/XRateLimitLimit'
+            X-RateLimit-Remaining:
+              $ref: '../../components/headers.yaml#/components/headers/XRateLimitRemaining'
+          content:
+            application/json:
+              schema:
+                $ref: 'components/schemas/responses.yaml#/components/schemas/UserResponse'
+              examples:
+                User response:
+                  $ref: 'components/examples.yaml#/components/examples/UserResponse'
+        '400':
+          $ref: '../../components/responses.jsonapi.yaml#/components/responses/400'
+        '401':
+          $ref: '../../components/responses.jsonapi.yaml#/components/responses/401'
+        '403':
+          $ref: '../../components/responses.jsonapi.yaml#/components/responses/403'
+        '404':
+          $ref: '../../components/responses.jsonapi.yaml#/components/responses/404'
+        '409':
+          $ref: '../../components/responses.jsonapi.yaml#/components/responses/409'
+        '422':
+          $ref: '../../components/responses.jsonapi.yaml#/components/responses/422'
+        '429':
+          $ref: '../../components/responses.jsonapi.yaml#/components/responses/429'
+        '500':
+          $ref: '../../components/responses.jsonapi.yaml#/components/responses/500'
+        default:
+          $ref: '../../components/responses.json.yaml#/components/responses/default'
+
+    delete:
+      summary: Delete user
+      operationId: deleteUser
+      security:
+        - BearerToken: []
+      tags:
+        - User
+      parameters:
+        - $ref: '../../components/parameters.jsonapi.yaml#/components/parameters/Accept'
+      responses:
+        '204':
+          description: No Content
+          headers:
+            X-RateLimit-Limit:
+              $ref: '../../components/headers.yaml#/components/headers/XRateLimitLimit'
+            X-RateLimit-Remaining:
+              $ref: '../../components/headers.yaml#/components/headers/XRateLimitRemaining'
+        '401':
+          $ref: '../../components/responses.jsonapi.yaml#/components/responses/401'
+        '403':
+          $ref: '../../components/responses.jsonapi.yaml#/components/responses/403'
+        '404':
+          $ref: '../../components/responses.jsonapi.yaml#/components/responses/404'
+        '429':
+          $ref: '../../components/responses.jsonapi.yaml#/components/responses/429'
+        '500':
+          $ref: '../../components/responses.jsonapi.yaml#/components/responses/500'
+        default:
+          $ref: '../../components/responses.json.yaml#/components/responses/default'

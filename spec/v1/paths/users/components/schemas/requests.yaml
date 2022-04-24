@@ -1,0 +1,80 @@
+openapi: 3.0.3
+
+info:
+  title: '%API_TITLE%'
+  version: '%API_VERSION%'
+
+paths: { }
+
+components:
+  schemas:
+    UserCreateRequest:
+      title: The user create request
+      type: object
+      properties:
+        data:
+          title: The request data
+          type: object
+          properties:
+            type:
+              description: The resource type
+              type: string
+              enum:
+                - users
+            attributes:
+              title: The resource attributes
+              type: object
+              properties:
+                firstName:
+                  $ref: '../../../../components/schemas.yaml#/components/schemas/FirstName'
+                lastName:
+                  $ref: '../../../../components/schemas.yaml#/components/schemas/LastName'
+                email:
+                  $ref: '../../../../components/schemas.yaml#/components/schemas/Email'
+                role:
+                  $ref: '../../../../components/schemas.yaml#/components/schemas/UserRole'
+              additionalProperties: false
+              required:
+                - firstName
+                - lastName
+                - email
+                - role
+          required:
+            - type
+            - attributes
+      required:
+        - data
+
+    UserUpdateRequest:
+      title: The user update request
+      type: object
+      properties:
+        data:
+          title: The request data
+          type: object
+          properties:
+            type:
+              description: The resource type
+              type: string
+              enum:
+                - users
+            id:
+              $ref: '../../../../components/schemas.yaml#/components/schemas/Uuid'
+            attributes:
+              title: The resource attributes
+              type: object
+              properties:
+                firstName:
+                  $ref: '../../../../components/schemas.yaml#/components/schemas/FirstName'
+                lastName:
+                  $ref: '../../../../components/schemas.yaml#/components/schemas/LastName'
+                email:
+                  $ref: '../../../../components/schemas.yaml#/components/schemas/Email'
+                role:
+                  $ref: '../../../../components/schemas.yaml#/components/schemas/UserRole'
+              additionalProperties: false
+          required:
+            - type
+            - id
+      required:
+        - data

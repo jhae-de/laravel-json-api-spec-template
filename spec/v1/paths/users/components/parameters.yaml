@@ -1,0 +1,19 @@
+openapi: 3.0.3
+
+info:
+  title: '%API_TITLE%'
+  version: '%API_VERSION%'
+
+paths: { }
+
+components:
+  parameters:
+    User:
+      in: path
+      name: user
+      description: The user identifier
+      schema:
+        type: string
+        format: uuid
+      required: true
+      example: 00000000-0000-0000-0000-000000000000

@@ -1,0 +1,83 @@
+openapi: 3.0.3
+
+info:
+  title: '%API_TITLE%'
+  version: '%API_VERSION%'
+
+paths: { }
+
+components:
+  responses:
+    422:
+      description: Unprocessable Entity
+      headers:
+        Content-Type:
+          $ref: 'headers.json.yaml#/components/headers/ContentType'
+        X-RateLimit-Limit:
+          $ref: 'headers.yaml#/components/headers/XRateLimitLimit'
+        X-RateLimit-Remaining:
+          $ref: 'headers.yaml#/components/headers/XRateLimitRemaining'
+      content:
+        application/json:
+          schema:
+            $ref: '../../jsonapi.schema.yaml#/definitions/failure'
+          example:
+            errors:
+              - status: '422'
+                title: Unprocessable Entity
+                detail: The field ... is required.
+
+    429:
+      description: Too Many Requests
+      headers:
+        Content-Type:
+          $ref: 'headers.json.yaml#/components/headers/ContentType'
+        X-RateLimit-Limit:
+          $ref: 'headers.yaml#/components/headers/XRateLimitLimit'
+        X-RateLimit-Remaining:
+          $ref: 'headers.yaml#/components/headers/XRateLimitRemaining'
+        X-RateLimit-Reset:
+          $ref: 'headers.yaml#/components/headers/XRateLimitReset'
+      content:
+        application/json:
+          schema:
+            $ref: '../../jsonapi.schema.yaml#/definitions/failure'
+          example:
+            errors:
+              - status: '429'
+                title: Too Many Requests
+                detail: Too many attempts.
+
+    500:
+      description: Internal Server Error
+      headers:
+        Content-Type:
+          $ref: 'headers.json.yaml#/components/headers/ContentType'
+        X-RateLimit-Limit:
+          $ref: 'headers.yaml#/components/headers/XRateLimitLimit'
+        X-RateLimit-Remaining:
+          $ref: 'headers.yaml#/components/headers/XRateLimitRemaining'
+      content:
+        application/json:
+          schema:
+            $ref: '../../jsonapi.schema.yaml#/definitions/failure'
+          example:
+            errors:
+              - status: '500'
+                title: Internal Server Error
+                detail: An internal server error occurred.
+
+    default:
+      description: Unexpected error
+      headers:
+        Content-Type:
+          $ref: 'headers.json.yaml#/components/headers/ContentType'
+      content:
+        application/json:
+          schema:
+            $ref: '../../jsonapi.schema.yaml#/definitions/failure'
+          example:
+            errors:
+              - status: 'xxx'
+                title: Unexpected error
+                detail: An unexpected error occurred.

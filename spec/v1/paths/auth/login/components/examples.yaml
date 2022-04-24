@@ -1,0 +1,27 @@
+openapi: 3.0.3
+
+info:
+  title: '%API_TITLE%'
+  version: '%API_VERSION%'
+
+paths: { }
+
+components:
+  examples:
+    AuthLoginRequest:
+      value:
+        email: john.doe@example.com
+        password: p455w0rd
+
+    AuthLoginResponse:
+      value:
+        accessToken: 1|epbana5twPuWFNFbu9ysCcMbFgWhAxOkz2bS2Wgr
+        permissions:
+          - user:list
+          - user:read:any
+          - user:read:own
+          - user:create
+          - user:update:any
+          - user:update:own
+          - user:delete:any
+          - user:delete:own

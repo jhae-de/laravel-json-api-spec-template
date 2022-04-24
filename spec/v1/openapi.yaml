@@ -1,0 +1,36 @@
+openapi: 3.0.3
+
+info:
+  title: '%API_TITLE%'
+  description: '%API_DESCRIPTION%'
+  version: '%API_VERSION%'
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+
+servers:
+  - url: http://localhost:8000/api/v1
+    description: Local development server
+
+security:
+  - BearerToken: []
+
+tags:
+  - name: Auth
+    description: The auth resource
+  - name: User
+    description: The user resource
+
+paths:
+  /auth/login:
+    $ref: 'paths/auth/login/index.yaml#/paths/~1auth~1login'
+  /users:
+    $ref: 'paths/users/index.yaml#/paths/~1users'
+  /users/{user}:
+    $ref: 'paths/users/index.yaml#/paths/~1users~1{user}'
+
+components:
+  securitySchemes:
+    BearerToken:
+      type: http
+      scheme: bearer
