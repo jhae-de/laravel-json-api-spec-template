@@ -1,0 +1,21 @@
+{
+  "name": "laravel-json-api-spec-template",
+  "version": "0.0.0",
+  "author": "Jan Hähne (https://github.com/jhae-de)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jhae-de/laravel-json-api-spec-template"
+  },
+  "scripts": {
+    "lint": "openapi lint spec/v1/openapi.yaml",
+    "docs": "openapi preview-docs --host 0.0.0.0 spec/v1/openapi.yaml",
+    "bundle": "openapi bundle spec/v1/openapi.yaml --output dist/openapi.json",
+    "build": "redoc-cli build spec/v1/openapi.yaml --output dist/index.html",
+    "ci:lint": "yarn run lint"
+  },
+  "devDependencies": {
+    "@redocly/openapi-cli": "^1.0.0-beta.94",
+    "redoc-cli": "^0.13.10"
+  }
+}

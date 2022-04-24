@@ -1,0 +1,17 @@
+version: '3.9'
+
+services:
+  node:
+    container_name: ${DOCKER_NODE_CONTAINER_NAME}
+    environment:
+      API_TITLE: ${API_TITLE}
+      API_DESCRIPTION: ${API_DESCRIPTION}
+      API_VERSION: latest
+    image: ${DOCKER_NODE_IMAGE}
+    ports:
+      - '8080:8080'
+    stdin_open: true
+    user: ${DOCKER_NODE_CONTAINER_USER}
+    volumes:
+      - .:${DOCKER_NODE_CONTAINER_WORKDIR}
+    working_dir: ${DOCKER_NODE_CONTAINER_WORKDIR}
